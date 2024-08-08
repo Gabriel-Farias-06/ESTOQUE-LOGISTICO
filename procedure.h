@@ -181,3 +181,21 @@ void salvar_produto()
 
     fclose(arq);
 }
+
+void recuperar_entrada_produto()
+{
+    FILE * arq = fopen("produtos.txt", "r");
+    if (arq == NULL)
+    {
+        printf("Erro ao recuperar irformacoes no arquivo produtos.txt. \n");
+        system("pause");
+        system("cls");
+        return;
+    }
+    while (fscanf(arq,"Nome: %[^\n]\nCodigo: %[^\n]\nPreco de compra: %f\n\n", produto_entrada[i].nome, produto_entrada[i].codigo, produto_entrada[i].preco));
+    {
+        i++;
+        produtos_existentes++;
+    }
+    fclose(arq);
+}
