@@ -48,7 +48,7 @@ int funcionarios_existentes = 0; //tem a quantidade de funcionarios já cadastra
 void recuperar_senha_adm(); // vai procurar a senha de adm no arquivo dela *feito
 void recuperar_funcionario(); // vai procurar os funcionarios no arquivo que eles estao cadastrados *feito
 void recuperar_produto(); // vai procurar os produtos no arquivo que eles estao cadastrados *feito
-void recuperar_entrada_produto(); // vai procurar as entradas de produtos no arquivo que eles estao cadastrados *fzr Lara
+void recuperar_entrada_produto(); // vai procurar as entradas de produtos no arquivo que eles estao cadastrados *feito
 void recuperar_venda_produto(); // vai procurar as vendas de produtos no arquivo que eles estao cadastrados *fzr Emily
 void menu_login(); // menu inicial onde voce pode entrar pelo seus dados de funcionario ou senha de adm *fzr Iza
 void login_funcionario(); // login se quiser entrar como funcionario *feito
@@ -63,8 +63,8 @@ void menu_cadastro_e_exclusao_produto(); // autoexplicativo *fzr Iza
 void cadastro_produto(); // autoexplicativo *fzr Bia
 void salvar_produto(); // funcao para cadastrar os novos produtos no arquivo *feito
 void exclusao_produto(); // autoexplicativo *fzr Bia
-void entrada_produto(); // autoexplicativo *fzr Lara
-void salvar_entrada_produto(); // funcao para cadastrar a entrada de produtos no arquivo *fzr Lara
+void entrada_produto(); // autoexplicativo *feito
+void salvar_entrada_produto(); // funcao para cadastrar a entrada de produtos no arquivo *feito
 void venda_produto(); // autoexplicativo *fzr Emily
 void salvar_venda_produto(); // funcao para cadastrar a venda de produtos no arquivo *fzr Emily
 void extrato(); // autoexplicativo *fzr Gabriel

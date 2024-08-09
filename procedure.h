@@ -153,7 +153,7 @@ void salvar_funcionario()
 
     if (arq == NULL)
     {
-        printf("Erro ao salvar novo produto no arquivo produtos.txt.\n");
+        printf("Erro ao salvar novo produto no arquivo funcionarios.txt.\n");
         system("pause");
         system("cls");
         return;
@@ -192,10 +192,50 @@ void recuperar_entrada_produto()
         system("cls");
         return;
     }
-    while (fscanf(arq,"Nome: %[^\n]\nCodigo: %[^\n]\nPreco de compra: %f\n\n", produto_entrada[i].nome, produto_entrada[i].codigo, produto_entrada[i].preco));
+    while (fscanf(arq,"Nome: %[^\n]\nCodigo: %[^\n]\nPreco de compra: %f\n\n", produto_entrada[i].nome, produto_entrada[i].codigo, &produto_entrada[i].preco) == 3);
     {
         i++;
         produtos_existentes++;
     }
+    fclose(arq);
+}
+
+void entrada_produto()
+{
+    FILE * arq = fopen("produtos.txt", "a");
+
+    printf("Digite o nome do produto:");
+
+    fflush(stdin);
+    gets(produto_entrada[produtos_existentes].nome);
+
+    printf("Digite a quantidade de produtos:");
+
+    scanf("%i", &produto_entrada[produtos_existentes].quantidade);
+
+    printf("Digite o preco de compra:"):
+
+    scanf("%f", &produto_entrada[produtos_existentes].preco_de_compra);
+
+    system("cls");
+
+    salvar_entrada_produto();
+    
+    produtos_existentes++;
+}
+
+void salvar_entrada_produto()
+{
+    FILE * arq = fopen("produtos.txt", "a");
+    if(arq == NULL)
+    {
+        printf("Erro ao salvar novo produto no produtos.txt.\n");
+        system("pause");
+        system("cls");
+        return;
+    }
+    
+    fprintf("Nome: %s\nQuantidade: %i\nPreco do produto:%f.", produto_entrada[produtos_existentes].nome, produto_entrada[produtos_existentes].quantidade, produto_entrada[produtos_existentes].preco_de_compra);
+
     fclose(arq);
 }
