@@ -1,5 +1,28 @@
 #include "lib.h"
 
+void salvar_venda_produto(){}//FAZER DEPOIS
+
+void venda_produto()//FAZER PRIMEIRO
+{
+    /*FILE * arq = fopen("venda_produto.txt", "a");
+    if (arq == NULL)
+    {
+        printf("Erro ao registrar informacoes de venda no arquivo venda_produto.txt.\n");
+        system("pause");
+        system("cls");
+        return;
+    }
+    printf ("Digite o nome do produto:\n");
+    fflush(stdin);
+    gets(Produto_venda.nome);
+    printf ("Digite a quantidade vendida:\n");
+    fflush(stdin);
+    gets(Produto_venda.quantidade);
+    */
+}
+
+void recuperar_venda_produto(){}//FAZER POR ULTIMO
+
 void recuperar_senha_adm()
 {
     FILE * arq = fopen("senha_adm.txt", "r");
@@ -11,7 +34,7 @@ void recuperar_senha_adm()
         return;
     }
 
-    fscanf(arq, "Ola admnistrador, digite sua senha a seguir (máximo de 6 digitos) : %[^\n]", senha_adm);
+    fscanf(arq, "Ola admnistrador, digite sua senha a seguir (maximo de 6 digitos) : %[^\n]", senha_adm);
 
     fclose(arq);
 

@@ -42,7 +42,7 @@ typedef struct Produto_venda
 char senha_adm[7]; // senha que ficara num arquivo separado para quando entrarem pela primeira vez nao precisarem de cadastro
 
 int produtos_existentes = 0; //tem a quantidade de produtos já cadastrados, essa quantidade é calculada no recuperar_entrada_produto() e aumentada/diminuida no cadastrar/excluir produto
-
+int produtos_vendidos = 0;
 int funcionarios_existentes = 0; //tem a quantidade de funcionarios já cadastrados, essa quantidade é calculada no recuperar_funcionario() e aumentada/diminuida no cadastrar/excluir funcionario
 
 void recuperar_senha_adm(); // vai procurar a senha de adm no arquivo dela *feito
