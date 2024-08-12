@@ -58,7 +58,7 @@ void menu_adm(); // menu se entrar como adm (pode excluir/cadastrar funcionarios
 void menu_cadastro_e_exclusao_funcionario(); // menu que so aparece para adms *fzr Iza
 void cadastro_funcionario(); // autoexplicativo *feito
 void salvar_funcionario(); // funcao para cadastrar os novos funcionarios no arquivo *feito
-void exclusao_funcionario(); // autoexplicativo *fzr Iza
+void exclusao_funcionario(); // autoexplicativo *deve tá errado
 void menu_cadastro_e_exclusao_produto(); // autoexplicativo *fzr Iza
 void cadastro_produto(); // autoexplicativo *fzr Bia
 void salvar_produto(); // funcao para cadastrar os novos produtos no arquivo *feito

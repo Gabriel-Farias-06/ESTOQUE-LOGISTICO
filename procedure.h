@@ -262,3 +262,30 @@ void salvar_entrada_produto()
 
     fclose(arq);
 }
+
+void exclusao_funcionario()
+{
+    boolean ver = 1;
+    int funcionarios_existentes;
+    if(login_adm()) 
+    {
+        printf("Digite o codigo do funcionario que voce quer excluir: ");
+        scanf("%d", &); // tentado descobrir oque é equivalente a contadig nesse codigo
+        for(int i = 0; i <= LIM; i++)
+        {
+            if(contaDig == funcionarios_existentes[i].codigo)
+            {
+                funcionarios_existentes--;
+                for(int j = i; j < LIM; j++) salvar_funcionario[j] = salvar_funcionario[j + 1];
+                salvar_funcionario(funcionarios_existentes);
+                printf("             Funcionario deletado com sucesso\n");
+                ver = 0;
+                break;
+            }
+            
+        }
+    if(ver) printf("             Funcionario nao registrada\n");
+    system("pause");
+    system("cls");
+    }
+}
