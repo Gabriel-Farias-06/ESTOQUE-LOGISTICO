@@ -4,7 +4,7 @@ void salvar_venda_produto(){}//FAZER DEPOIS
 
 void venda_produto()//FAZER PRIMEIRO
 {
-    /*FILE * arq = fopen("venda_produto.txt", "a");
+    /*FILE *arq = fopen("venda_produto.txt", "a");
     if (arq == NULL)
     {
         printf("Erro ao registrar informacoes de venda no arquivo venda_produto.txt.\n");
@@ -21,7 +21,26 @@ void venda_produto()//FAZER PRIMEIRO
     */
 }
 
-void recuperar_venda_produto(){}//FAZER POR ULTIMO
+void recuperar_venda_produto()//LER DO ARQUIVO E GUARDAR EM UMA VARIAVEL
+{
+    FILE *arq = fopen("venda_produto.txt", "r");
+    if (arq == NULL)
+    {
+        printf ("Erro ao abrir o arquivo.\n");
+        system("pause");
+        system("cls");
+        return;
+    }
+    while (3 == fscanf(arq, 
+    "Nome do produto: %100[^\n]\n"
+    "Quantidade de produtos vendidos: %d\n"
+    "Preco esperado de venda: %f\n\n"
+    produto[produtos_existentes].nome, &produto[produtos_existentes].quantidade, &produto[produtos_existentes].preco))
+    {
+        produtos_existentes++;
+    }
+    fclose(arq);
+}
 
 void recuperar_senha_adm()
 {
