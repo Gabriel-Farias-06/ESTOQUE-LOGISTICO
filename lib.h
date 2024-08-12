@@ -50,7 +50,7 @@ void recuperar_funcionario(); // vai procurar os funcionarios no arquivo que ele
 void recuperar_produto(); // vai procurar os produtos no arquivo que eles estao cadastrados *feito
 void recuperar_entrada_produto(); // vai procurar as entradas de produtos no arquivo que eles estao cadastrados *feito
 void recuperar_venda_produto(); // vai procurar as vendas de produtos no arquivo que eles estao cadastrados *fzr Emily
-void menu_login(); // menu inicial onde voce pode entrar pelo seus dados de funcionario ou senha de adm *fzr Iza
+void menu_login(); // menu inicial onde voce pode entrar pelo seus dados de funcionario ou senha de adm *feito
 void login_funcionario(); // login se quiser entrar como funcionario *feito
 void login_adm(); // login se quiser entrar como adm *fzr Gabriel
 void menu_funcionario(); // menu se entrar como funcionario (nao pode excluir/cadastrar funcionarios) *fzr Iza
@@ -58,7 +58,7 @@ void menu_adm(); // menu se entrar como adm (pode excluir/cadastrar funcionarios
 void menu_cadastro_e_exclusao_funcionario(); // menu que so aparece para adms *fzr Iza
 void cadastro_funcionario(); // autoexplicativo *feito
 void salvar_funcionario(); // funcao para cadastrar os novos funcionarios no arquivo *feito
-void exclusao_funcionario(); // autoexplicativo *deve tá errado
+void exclusao_funcionario(); // autoexplicativo *feito
 void menu_cadastro_e_exclusao_produto(); // autoexplicativo *fzr Iza
 void cadastro_produto(); // autoexplicativo *fzr Bia
 void salvar_produto(); // funcao para cadastrar os novos produtos no arquivo *feito
