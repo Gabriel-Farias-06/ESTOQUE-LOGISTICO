@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-struct data
+typedef int boolean;
+
+typedef struct
 {
     int dia;
     int mes;
     int ano;
-};
+} data;
 
-typedef struct Funcionario 
+struct Funcionario 
 {
     char nome[100];
     char codigo[7];
@@ -18,21 +21,21 @@ typedef struct Funcionario
     char contato[12];
 } funcionario[300];
 
-typedef struct Produto
+struct Produto
 {
     char nome[100];
     char codigo[7];
     float preco;
 } produto[300];
 
-typedef struct Produto_entrada
+struct Produto_entrada
 {
     char nome[100];
     int quantidade;
     float preco_de_compra;
 } produto_entrada[300];
 
-typedef struct Produto_venda
+struct Produto_venda
 {
     char nome[100];
     int quantidade;
@@ -52,7 +55,7 @@ void recuperar_entrada_produto(); // vai procurar as entradas de produtos no arq
 void recuperar_venda_produto(); // vai procurar as vendas de produtos no arquivo que eles estao cadastrados *fzr Emily
 void menu_login(); // menu inicial onde voce pode entrar pelo seus dados de funcionario ou senha de adm *feito
 void login_funcionario(); // login se quiser entrar como funcionario *feito
-void login_adm(); // login se quiser entrar como adm *fzr Gabriel
+int login_adm(); // login se quiser entrar como adm *fzr Gabriel
 void menu_funcionario(); // menu se entrar como funcionario (nao pode excluir/cadastrar funcionarios) *fzr Iza
 void menu_adm(); // menu se entrar como adm (pode excluir/cadastrar funcionarios) *fzr Iza
 void menu_cadastro_e_exclusao_funcionario(); // menu que so aparece para adms *fzr Iza

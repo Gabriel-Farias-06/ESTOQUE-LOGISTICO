@@ -51,6 +51,7 @@ void recuperar_funcionario()
         return;
     }
 
+    int i;
     while (fscanf(arq, "Nome: %[^\n]\nCodigo: %[^\n]\nCPF: %[^\n]\nData de nascimento: %d/%d/%d\nSenha: %[^\n]\nTelefone: %[^\n]\n\n", funcionario[funcionarios_existentes].nome, funcionario[funcionarios_existentes].codigo, &funcionario[funcionarios_existentes].nascimento.dia, &funcionario[funcionarios_existentes].nascimento.mes, &funcionario[funcionarios_existentes].nascimento.ano, funcionario[funcionarios_existentes].senha, funcionario[funcionarios_existentes].contato) == 8)
     {
         i++;
@@ -72,6 +73,7 @@ void recuperar_produto()
         return;
     }
 
+    int i;
     while (fscanf(arq, "Nome: %[^\n]\nCodigo: %[^\n]\nPreco de compra: %f\n\n", produto[i].nome, produto[i].codigo, &produto[i].preco) == 3)
     {
         i++;
@@ -113,7 +115,7 @@ void login_funcionario()
 
 }
 
-void login_adm()
+int login_adm()
 {
     char senha_digitada[7];
     printf("Digite a senha de administrador: ");
@@ -121,14 +123,17 @@ void login_adm()
     fflush(stdin);
     gets(senha_digitada);
 
-    if (strcmp (senha_digitada, senha_adm) == 0) menu_adm();
+    if (strcmp (senha_digitada, senha_adm) == 0) return 1;
 
     else
     {
         printf("A senha digitada e a senha de adminstrador nao coincidem.\n");
         system("pause");
         system("cls");
+        return 0;
     }
+
+    
 }
 
 void cadastro_funcionario()
@@ -200,7 +205,7 @@ void salvar_produto()
         return;
     }
 
-    fprintf("Nome: %s\nCodigo: %s\nPreco de compra: %f\n\n", produto[produtos_existentes].nome, produto[produtos_existentes].codigo, produto[produtos_existentes].preco);
+    fprintf(arq, "Nome: %s\nCodigo: %s\nPreco de compra: %f\n\n", produto[produtos_existentes].nome, produto[produtos_existentes].codigo, produto[produtos_existentes].preco);
 
     fclose(arq);
 }
@@ -215,7 +220,9 @@ void recuperar_entrada_produto()
         system("cls");
         return;
     }
-    while (fscanf(arq,"Nome: %[^\n]\nCodigo: %[^\n]\nPreco de compra: %f\n\n", produto_entrada[i].nome, produto_entrada[i].codigo, &produto_entrada[i].preco) == 3);
+
+    int i;
+    while (fscanf(arq,"Nome: %[^\n]\nQuantidade: %[^\n]\nPreco de compra: %f\n\n", produto_entrada[i].nome, produto_entrada[i].quantidade, &produto_entrada[i].preco_de_compra) == 3);
     {
         i++;
         produtos_existentes++;
@@ -236,7 +243,7 @@ void entrada_produto()
 
     scanf("%i", &produto_entrada[produtos_existentes].quantidade);
 
-    printf("Digite o preco de compra:"):
+    printf("Digite o preco de compra:");
 
     scanf("%f", &produto_entrada[produtos_existentes].preco_de_compra);
 
@@ -258,7 +265,7 @@ void salvar_entrada_produto()
         return;
     }
     
-    fprintf("Nome: %s\nQuantidade: %i\nPreco do produto:%f.", produto_entrada[produtos_existentes].nome, produto_entrada[produtos_existentes].quantidade, produto_entrada[produtos_existentes].preco_de_compra);
+    fprintf(arq, "Nome: %s\nQuantidade: %i\nPreco do produto:%f.", produto_entrada[produtos_existentes].nome, produto_entrada[produtos_existentes].quantidade, produto_entrada[produtos_existentes].preco_de_compra);
 
     fclose(arq);
 }
@@ -266,17 +273,17 @@ void salvar_entrada_produto()
 void exclusao_funcionario()
 {
     boolean ver = 1;
-    int codigoDig;
+    char codigoDig[7];
     if(login_adm()) 
     {
         printf("Digite o codigo do funcionario que voce quer excluir: ");
         scanf("%d", &codigoDig); 
-        for(int i = 0; i <= LIM; i++)
+        for(int i = 0; i <= funcionarios_existentes; i++)
         {
-            if(codigoDig == funcionario[i].codigo)
+            if(strcmp(codigoDig, funcionario[i].codigo) == 0)
             {
+                for(int j = i; j < funcionarios_existentes; j++) funcionario[j] = funcionario[j + 1];
                 funcionarios_existentes--;
-                for(int j = i; j < LIM; j++) funcionario[j] = funcionario[j + 1];
                 salvar_funcionario(funcionarios_existentes);
                 printf("             Funcionario deletado com sucesso\n");
                 ver = 0;

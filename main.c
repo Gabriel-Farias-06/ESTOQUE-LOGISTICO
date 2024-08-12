@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "telas.c"
 
 int main()
 {
