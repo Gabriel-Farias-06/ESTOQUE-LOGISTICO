@@ -3,13 +3,6 @@
 void recuperar_senha_adm()
 {
     FILE * arq = fopen("senha_adm.txt", "r");
-    if (arq == NULL)
-    {
-        printf("Erro ao recuperar informacoes do arquivo senha_adm.txt.\n");
-        system("pause");
-        system("cls");
-        return;
-    }
 
     fscanf(arq, "Ola admnistrador, digite sua senha a seguir (maximo de 6 digitos) : %[^\n]", senha_adm);
 
@@ -21,14 +14,6 @@ void recuperar_funcionario()
 {
     FILE * arq = fopen("funcionarios.txt", "r");
 
-    if (arq == NULL)
-    {
-        printf("Erro ao recuperar informacoes do arquivo funcionarios.txt.\n");
-        system("pause");
-        system("cls");
-        return;
-    }
-
     while (fscanf(arq, "Nome: %[^\n]\nCodigo: %[^\n]\nCPF: %[^\n]\nData de nascimento: %d/%d/%d\nSenha: %[^\n]\nTelefone: %[^\n]\n\n", funcionario[funcionarios_existentes].nome, funcionario[funcionarios_existentes].codigo, &funcionario[funcionarios_existentes].nascimento.dia, &funcionario[funcionarios_existentes].nascimento.mes, &funcionario[funcionarios_existentes].nascimento.ano, funcionario[funcionarios_existentes].senha, funcionario[funcionarios_existentes].contato) == 8) funcionarios_existentes++;
 
     fclose(arq);
@@ -38,14 +23,6 @@ void recuperar_produto()
 {
     FILE * arq = fopen("produtos.txt", "r");
 
-    if (arq == NULL)
-    {
-        printf("Erro ao recuperar informacoes do arquivo produtos.txt.\n");
-        system("pause");
-        system("cls");
-        return;
-    }
-
     while (fscanf(arq, "Nome: %[^\n]\nCodigo: %[^\n]\nPreco de compra: %f\n\n", produto[produtos_existentes].nome, produto[produtos_existentes].codigo, &produto[produtos_existentes].preco) == 3) produtos_existentes++;
 
     fclose(arq);
@@ -54,13 +31,6 @@ void recuperar_produto()
 void recuperar_entrada_produto()
 {
     FILE * arq = fopen("entrada_produto.txt", "r");
-    if (arq == NULL)
-    {
-        printf("Erro ao recuperar irformacoes no arquivo produtos.txt. \n");
-        system("pause");
-        system("cls");
-        return;
-    }
 
     while (fscanf(arq,"Nome: %[^\n]\nQuantidade: %[^\n]\nPreco de compra: %f\n\n", produto_entrada[produtos_comprados].nome, produto_entrada[produtos_comprados].quantidade, &produto_entrada[produtos_comprados].preco_de_compra) == 3) produtos_comprados++;
 
@@ -70,13 +40,7 @@ void recuperar_entrada_produto()
 void recuperar_venda_produto()
 {
     FILE *arq = fopen("venda_produto.txt", "r");
-    if (arq == NULL)
-    {
-        printf ("Erro ao abrir o arquivo.\n");
-        system("pause");
-        system("cls");
-        return;
-    }
+
     while (3 == fscanf(arq, 
     "Nome do produto: %100[^\n]\n"
     "Quantidade de produtos vendidos: %d\n"
@@ -127,7 +91,6 @@ void login_adm()
     gets(senha_digitada);
 
     if (strcmp (senha_digitada, senha_adm) == 0) menu_adm();
-
     else
     {
         printf("A senha digitada e a senha de adminstrador nao coincidem.\n");
@@ -438,7 +401,6 @@ void consulta_produto()
     boolean ver = 0;
     float total_compra = 0;
     float total_venda = 0;
-    float lucro;
     int total_produtos_vendidos =  0;
     int total_produtos_comprados = 0;
     char produtoDigitado[100];
