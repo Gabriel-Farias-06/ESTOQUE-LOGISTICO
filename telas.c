@@ -2,13 +2,24 @@
 
 void menu_login()
 {
-    int forma_login;
+    recuperar_senha_adm();
+    recuperar_funcionario();
+    recuperar_produto();
+    recuperar_entrada_produto();
+    recuperar_venda_produto();
 
-    while(forma_login != 3)
+    int opcaoDigitada;
+
+    while(opcaoDigitada != 3)
     {
-        printf("        Bem vindo a central de estoque logistico\n\nQual a forma de login desejada?\n\n1- Logar como administrador\n2- Logar como funcionario\n3- Encerrar o programa\nDigite sua opcao: ");
-        scanf("%d", &forma_login);
-        switch (forma_login)
+        printf("        Bem vindo a central de estoque logistico\n\n"
+        "Qual a forma de login desejada?\n\n"
+        "1- Logar como administrador\n"
+        "2- Logar como funcionario\n"
+        "3- Encerrar o programa\n"
+        "Digite sua opcao: ");
+        scanf("%d", &opcaoDigitada);
+        switch (opcaoDigitada)
         {
             case 1:
                 login_adm();
@@ -29,95 +40,140 @@ void menu_login()
 
 void menu_funcionario()
 {
+    int opcaoDigitada;
 
-    boolean ver = 0;
-    int forma_funcionario = 0, formaDeLogin; // opcao do Menu Funcionario 
-    printf("            Bem-vindo ao menu do funcionario\n Escolha a forma de login:\n\n");
-    printf("1- Logar pela senha de administrador\n2- Logar como funcionario\nDigite sua opcao: ");
-    scanf("%d", &formaDeLogin);
-    if (formaDeLogin == 1) if (login_adm()) ver = 1; else return;
-    else if (formaDeLogin == 2)
+    while(opcaoDigitada != 6)
     {
-        printf("Digite seu codigo de funcionario: ");
-        scanf("%d", &codigoFuncionario);
-        printf("Digite sua senha de funcionario: ");
-        scanf("%d", &senhafuncionario);
-        system("cls");
-        for(int i = 0; i < funcionarios_existentes; i++) if (codigoFuncionario == funcionario[i].codigo && senhafuncionario == funcionario[i].senha)
+        printf ("1 - Declarar entrada do produto\n"
+        "2 - Cadastrar / Excluir produto\n"
+        "3 - Declarar venda do produto\n"
+        "4 - Consultar produto\n"
+        "5 - Extrato\n"
+        "6 - Voltar\n"
+        "Digite sua opcao: ");
+        scanf ("%d", &opcaoDigitada);
+        switch (opcaoDigitada)
         {
-            ver = 1;
-            printf("Codigo e senha corretos\n");
+        case 1:
+            entrada_produto();
+            break;
+        case 2:
+            salvar_entrada_produto();
+            break;
+        case 3:
+            venda_produto();
+            break;
+        case 4:
+            consulta_produto();
+            break;
+        case 5:
+            extrato();
+        case 6:
+            break;
+        default:
+            printf("Digite uma opcao valida!\n");
+            break;
         }
-        else printf("Codigo de funcionario e/ou senha incorreto(s)\n");
-        system("pause");
-        system("cls");
     }
-    else
-    {
-        printf("Digite uma opcao valida\n");
-        system("pause");
-        system("cls");
-        return;
-
-}
 }
 
 void menu_adm()
 {
-    int forma_adm;
+    int opcaoDigitada;
 
-    while(forma_adm != 3)
+    while (opcaoDigitada != 7)
     {
-        printf("        Bem vindo ao Menu do Adminstrador\n\nQual acao desejada?\n\n1- Cadastrar novo funcionario\n2- Exluir funcionario existente\n3- Encerrar o programa\nDigite sua opcao: ");
-        scanf("%d", &forma_adm);
-        switch (forma_adm)
-        {
-            case 1:
-                cadastro_funcionario();
-                break;
-            case 2:
-                exclusao_funcionario();
-                break;
-            case 3:
-                break;
-            default:
-                printf("Digite uma opcao valida!\n");
-                break;
-        }
-        system("pause");
-        system("cls");
-    }
+        printf ("1 - Cadastrar / Excluir funcionario\n"
+        "2 - Cadastrar / Excluir produto\n"
+        "3 - Declarar venda do produto\n"
+        "4 - Declarar entrada do produto\n"
+        "5 - Consultar informacoes do produto\n"
+        "6 - Extrato\n"
+        "7 - Voltar\n"
+        "Digite sua opcao: ");
+        scanf ("%d", &opcaoDigitada);
 
+        switch (opcaoDigitada)
+        {
+        case 1:
+            menu_cadastro_e_exclusao_funcionario();
+            break;
+        case 2:
+            menu_cadastro_e_exclusao_produto();
+            break;
+        case 3:
+            venda_produto();
+            break;
+        case 4:
+            entrada_produto();
+            break;
+        case 5:
+            consulta_produto();
+            break;
+        case 6:
+            extrato();
+            break;
+        case 7:
+            break;
+        default:
+            printf("Digite uma opcao valida!\n");
+            break;
+        }
+    }
 }
 
 void menu_cadastro_e_exclusao_funcionario()
 {
-// BIXO ISSO AQUI NAO FAZ SENTINDO 
+    int opcaoDigitada;
+    while (opcaoDigitada != 3)
+    {
+        printf ("1 - Cadastrar funcionario\n"
+        "2 - Excluir funcionario\n"
+        "3 - Voltar"
+        "Digite sua opcao: ");
+        scanf("%d", &opcaoDigitada);
+
+        switch (opcaoDigitada)
+        {
+        case 1:
+            cadastro_funcionario();
+            break;
+        case 2:
+            exclusao_funcionario();
+            break;
+        case 3:
+            break;
+        default:
+            printf("Digite uma opcao valida!\n");
+            break;
+        }
+    }
 }
 
 void menu_cadastro_e_exclusao_produto()
 {
-    int forma_produto;
-
-    while(forma_produto != 3)
+    int opcaoDigitada;
+    while (opcaoDigitada != 3)
     {
-        printf("        Bem vindo ao Menu Cadastro e Exclusao de produtos \n\nQual acao desejada?\n\n1- Cadastrar novo produto\n2- Exluir produto existente\n3- Encerrar o programa\nDigite sua opcao: ");
-        scanf("%d", &forma_produto);
-        switch (forma_produto)
+        printf ("1 - Cadastrar produto\n"
+        "2 - Excluir produto\n"
+        "3 - Voltar\n"
+        "Digite sua opcao desejada: ");
+        scanf ("%d", &opcaoDigitada);
+
+        switch (opcaoDigitada)
         {
-            case 1:
-                cadastro_produto();
-                break;
-            case 2:
-                exclusao_produto();
-                break;
-            case 3:
-                break;
-            default:
-                printf("Digite uma opcao valida!\n");
-                break;
+        case 1:
+            cadastro_produto();
+            break;
+        case 2:
+            exclusao_produto();
+            break;
+        case 3:
+            break;
+        default:
+            printf("Digite uma opcao valida!\n");
+            break;
         }
-        system("pause");
-        system("cls");
     }
 }
