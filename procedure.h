@@ -126,7 +126,7 @@ void login_adm()
     fflush(stdin);
     gets(senha_digitada);
 
-    if (strcmp (senha_digitada, senha_adm) == 0) menu_adm;
+    if (strcmp (senha_digitada, senha_adm) == 0) menu_adm();
 
     else
     {
@@ -212,7 +212,7 @@ void exclusao_funcionario()
 
             for(int j = i; j < funcionarios_existentes; j++) funcionario[j] = funcionario[j + 1];
 
-            FILE *arq = fopen ("produtos.txt", "w");
+            FILE *arq = fopen ("funcionario.txt", "w");
             if (arq == NULL)
             {
                 printf("Erro ao abrir o arquivo produtos.txt. \n");
