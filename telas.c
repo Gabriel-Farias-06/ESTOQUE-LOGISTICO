@@ -3,6 +3,7 @@
 void menu_login()
 {
     recuperar_senha_adm();
+    printf("%s", senha_adm);
     recuperar_funcionario();
     recuperar_produto();
     recuperar_entrada_produto();
